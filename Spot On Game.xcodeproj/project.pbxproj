@@ -10,10 +10,12 @@
 		E9ABA6061A9FB5890046D268 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ABA6051A9FB5890046D268 /* main.m */; };
 		E9ABA6091A9FB5890046D268 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ABA6081A9FB5890046D268 /* AppDelegate.m */; };
 		E9ABA60C1A9FB5890046D268 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ABA60B1A9FB5890046D268 /* ViewController.m */; };
-		E9ABA60F1A9FB5890046D268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9ABA60D1A9FB5890046D268 /* Main.storyboard */; };
 		E9ABA6111A9FB5890046D268 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9ABA6101A9FB5890046D268 /* Images.xcassets */; };
 		E9ABA6141A9FB5890046D268 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9ABA6121A9FB5890046D268 /* LaunchScreen.xib */; };
 		E9ABA6201A9FB5890046D268 /* Spot_On_GameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ABA61F1A9FB5890046D268 /* Spot_On_GameTests.m */; };
+		E9ABA62B1A9FBADE0046D268 /* 17DiceIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9ABA6291A9FBADE0046D268 /* 17DiceIcon.png */; };
+		E9ABA62C1A9FBADE0046D268 /* NotSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = E9ABA62A1A9FBADE0046D268 /* NotSelected.png */; };
+		E9ABA62E1A9FBB5A0046D268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9ABA62D1A9FBB5A0046D268 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,12 +36,14 @@
 		E9ABA6081A9FB5890046D268 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E9ABA60A1A9FB5890046D268 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E9ABA60B1A9FB5890046D268 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E9ABA60E1A9FB5890046D268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9ABA6101A9FB5890046D268 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E9ABA6131A9FB5890046D268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E9ABA6191A9FB5890046D268 /* Spot On GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Spot On GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9ABA61E1A9FB5890046D268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9ABA61F1A9FB5890046D268 /* Spot_On_GameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Spot_On_GameTests.m; sourceTree = "<group>"; };
+		E9ABA6291A9FBADE0046D268 /* 17DiceIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 17DiceIcon.png; sourceTree = "<group>"; };
+		E9ABA62A1A9FBADE0046D268 /* NotSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotSelected.png; sourceTree = "<group>"; };
+		E9ABA62D1A9FBB5A0046D268 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 		E9ABA5F71A9FB5890046D268 = {
 			isa = PBXGroup;
 			children = (
+				E9ABA6291A9FBADE0046D268 /* 17DiceIcon.png */,
+				E9ABA62A1A9FBADE0046D268 /* NotSelected.png */,
 				E9ABA6021A9FB5890046D268 /* Spot On Game */,
 				E9ABA61C1A9FB5890046D268 /* Spot On GameTests */,
 				E9ABA6011A9FB5890046D268 /* Products */,
@@ -85,7 +91,7 @@
 				E9ABA6081A9FB5890046D268 /* AppDelegate.m */,
 				E9ABA60A1A9FB5890046D268 /* ViewController.h */,
 				E9ABA60B1A9FB5890046D268 /* ViewController.m */,
-				E9ABA60D1A9FB5890046D268 /* Main.storyboard */,
+				E9ABA62D1A9FBB5A0046D268 /* Main.storyboard */,
 				E9ABA6101A9FB5890046D268 /* Images.xcassets */,
 				E9ABA6121A9FB5890046D268 /* LaunchScreen.xib */,
 				E9ABA6031A9FB5890046D268 /* Supporting Files */,
@@ -199,9 +205,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9ABA60F1A9FB5890046D268 /* Main.storyboard in Resources */,
+				E9ABA62C1A9FBADE0046D268 /* NotSelected.png in Resources */,
 				E9ABA6141A9FB5890046D268 /* LaunchScreen.xib in Resources */,
+				E9ABA62E1A9FBB5A0046D268 /* Main.storyboard in Resources */,
 				E9ABA6111A9FB5890046D268 /* Images.xcassets in Resources */,
+				E9ABA62B1A9FBADE0046D268 /* 17DiceIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,14 +252,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E9ABA60D1A9FB5890046D268 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E9ABA60E1A9FB5890046D268 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E9ABA6121A9FB5890046D268 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -346,6 +346,7 @@
 				INFOPLIST_FILE = "Spot On Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -356,6 +357,7 @@
 				INFOPLIST_FILE = "Spot On Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -412,6 +414,7 @@
 				E9ABA6251A9FB5890046D268 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E9ABA6261A9FB5890046D268 /* Build configuration list for PBXNativeTarget "Spot On GameTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +423,7 @@
 				E9ABA6281A9FB5890046D268 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
