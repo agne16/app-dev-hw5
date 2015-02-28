@@ -126,6 +126,7 @@ static const int BALL_RADIUS = 40;
                 spot.image = touchedImage; // change image to touched spot image
                 [self touchedSpot:spot];
                 hitSpot = YES;
+                [spots removeObject:(spot)];
             }
         } // end for spot
     } // end for touch
@@ -138,6 +139,7 @@ static const int BALL_RADIUS = 40;
         }
         [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", score]];
     } // if hitSpot
+    
 }
 
 -(void)touchedSpot:(UIImageView *)spot {
@@ -182,6 +184,17 @@ static const int BALL_RADIUS = 40;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)finishedAnimation:(NSString *)animationId finished:(BOOL)finished context:(void *)context {
+    if ([spots count] < 3) {
+        [self addNewSpot];
+    }
+    score -= 20;    // ^^^ to add level: score -= 20 * self.level
+    if (score < 0) {
+        score = 0;
+    }
+    [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", score]];
 }
 
 @end
