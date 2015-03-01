@@ -139,28 +139,35 @@ static const int BALL_RADIUS = 40;
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    float viewWidth = self.view.bounds.size.width;
-    float viewHeight = self.view.bounds.size.height/8;
+    float viewWidthBound = self.view.bounds.size.width;
+    float viewHeightBound = self.view.bounds.size.height/8;
     float x = -1;
     float y = -1;
     for (UITouch *touch in touches) { // we really only have one on the simulator
         CGPoint point = [touch locationInView:self.view];
         x = point.x;
         y = point.y;
-        
     }
-    NSLog(@"x: %f, y: %f", x, y);
+    if(x >= 0 && x <= viewWidthBound && y >=0 && y <= viewHeightBound){
+        NSLog(@"YES");
+    }
+    else{
+        NSLog(@"NO");
+    }
+    //NSLog(@"x: %f, y: %f", x, y);
 }
 
 -(void)touchedSpot:(UIImageView *)spot {
-    spotsTouched++;
-    [self changeScore:(10)];
-    [spots removeObject:(spot)];
-    [self addNewSpot];
+    
+    //spotsTouched++;
+    //[self changeScore:(10)];
+    //[spots removeObject:(spot)];
+    //[self addNewSpot];
+    
     // hitPlayer.currentTime = 0; // ^^^
     // [hitPlayer play]; // ^^^
     
-    [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", score]];
+    //[self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", score]];
     
     // ^^^ whole big if for ++ level
     
@@ -170,7 +177,45 @@ static const int BALL_RADIUS = 40;
     [spot setNeedsDisplay]; // redraw the spot
     
     // give the spot time to redraw by delaying the end animation
-    [self performSelector:@selector(beginSpotEndAnimation:) withObject:spot afterDelay:0.01];
+    //[self performSelector:@selector(beginSpotEndAnimation:) withObject:spot afterDelay:0.01];
+    
+    
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    float x = -1;
+    float y = -1;
+    CGPoint point;
+    for (UITouch *touch in touches) { // we really only have one on the simulator
+        point = [touch locationInView:self.view];
+        x = point.x;
+        y = point.y;
+    }
+    //NSLog(@"x: %f, y: %f", x, y);
+    
+    
+    UIImageView *spot;
+    for (int i = spots.count-1; i>=0; i--) {
+        UIImageView *tempSpot = [spots objectAtIndex:i];
+        
+        // get current location of spot which is not where it is
+        // because it is animating, current location is where it will be
+        // to get current frame need to access core animation layer
+        CGRect frame = [[tempSpot.layer presentationLayer] frame];
+        
+        // find center of spot
+        CGPoint center = CGPointMake(frame.origin.x + frame.size.width/2, frame.origin.y + frame.size.height/2);
+        
+        // find distance between spot's center and touch
+        float distance = pow(center.x-point.x, 2) + pow(center.y-point.y, 2);
+        distance = sqrt(distance);
+        
+        // check if touch is within spot frame
+        if (distance <= frame.size.width/2) {
+            spot = tempSpot;
+        }
+    } // end for spot
+    [spot setFrame:CGRectMake(x, y, BALL_RADIUS * 2, BALL_RADIUS * 2)];
 }
 
 
@@ -201,7 +246,7 @@ static const int BALL_RADIUS = 40;
 }
 
 - (void)finishedAnimation:(NSString *)animationId finished:(BOOL)finished context:(void *)context {
-    
+    [self addNewSpot];
 }
 
 - (void)changeScore:(int)change {
