@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController {
     NSMutableArray *spots;
+    NSMutableArray *touchedSpots;
     NSMutableArray *lives;
     int spotsTouched;
     int score;
@@ -17,9 +18,11 @@
     BOOL gameOver;
     UIImage *touchedImage;
     UIImage *untouchedImage;
+    UIImageView *currentSpot;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+
 
 - (void) resetGame;
 - (void) addNewSpot;

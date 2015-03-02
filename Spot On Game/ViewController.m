@@ -20,6 +20,7 @@ static const int BALL_RADIUS = 40;
     [super viewDidLoad];
     srandom(time(0));
     spots = [[NSMutableArray alloc] init];
+    touchedSpots = [[NSMutableArray alloc] init];
     lives = [[NSMutableArray alloc] init];
     
     // init the spot images
@@ -126,8 +127,13 @@ static const int BALL_RADIUS = 40;
             // check if touch is within spot frame
             if (distance <= frame.size.width/2) {
                 spot.image = touchedImage; // change image to touched spot image
-                //[self touchedSpot:spot];
+                currentSpot = spot;
+                [self touchedSpot:spot];
+                
+                // give the spot time to redraw by delaying the end animation
+                [self performSelector:@selector(beginSpotEndAnimation:) withObject:spot afterDelay:0.01];
                 hitSpot = YES;
+                NSLog(@"HIT");
             }
         } // end for spot
     } // end for touch
@@ -158,6 +164,12 @@ static const int BALL_RADIUS = 40;
 }
 
 -(void)touchedSpot:(UIImageView *)spot {
+    currentSpot = spot;
+    [spot.layer removeAllAnimations];
+    [spots removeObject:(spot)];
+    [self addNewSpot];
+    [touchedSpots addObject:(spot)];
+    
     
     //spotsTouched++;
     //[self changeScore:(10)];
@@ -177,7 +189,7 @@ static const int BALL_RADIUS = 40;
     [spot setNeedsDisplay]; // redraw the spot
     
     // give the spot time to redraw by delaying the end animation
-    //[self performSelector:@selector(beginSpotEndAnimation:) withObject:spot afterDelay:0.01];
+    [self performSelector:@selector(beginSpotEndAnimation:) withObject:spot afterDelay:0.01];
     
     
 }
@@ -193,29 +205,8 @@ static const int BALL_RADIUS = 40;
     }
     //NSLog(@"x: %f, y: %f", x, y);
     
-    
-    UIImageView *spot;
-    for (int i = spots.count-1; i>=0; i--) {
-        UIImageView *tempSpot = [spots objectAtIndex:i];
-        
-        // get current location of spot which is not where it is
-        // because it is animating, current location is where it will be
-        // to get current frame need to access core animation layer
-        CGRect frame = [[tempSpot.layer presentationLayer] frame];
-        
-        // find center of spot
-        CGPoint center = CGPointMake(frame.origin.x + frame.size.width/2, frame.origin.y + frame.size.height/2);
-        
-        // find distance between spot's center and touch
-        float distance = pow(center.x-point.x, 2) + pow(center.y-point.y, 2);
-        distance = sqrt(distance);
-        
-        // check if touch is within spot frame
-        if (distance <= frame.size.width/2) {
-            spot = tempSpot;
-        }
-    } // end for spot
-    [spot setFrame:CGRectMake(x, y, BALL_RADIUS * 2, BALL_RADIUS * 2)];
+    [currentSpot setCenter:(point)];
+ 
 }
 
 
@@ -246,7 +237,7 @@ static const int BALL_RADIUS = 40;
 }
 
 - (void)finishedAnimation:(NSString *)animationId finished:(BOOL)finished context:(void *)context {
-    [self addNewSpot];
+    //[self addNewSpot]
 }
 
 - (void)changeScore:(int)change {
